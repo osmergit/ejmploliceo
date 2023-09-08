@@ -37,3 +37,13 @@ export const delevento =  (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   };
+ 
+  // Actualizar Evento deportivo
+  export const upevento =  (req, res) => {
+    const { id } = req.params;
+    const { fecha , equipo1, equipo2, marcador1, marcador2, tipoevento } = req.body;
+    evento
+      .updateOne({ _id: id }, { $set: { fecha , equipo1, equipo2, marcador1, marcador2, tipoevento } })
+      .then((data) => res.json(data))
+      .catch((error) => res.json({ message: error }));
+  };
